@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>미라클평생교육원 | K-디지털 교육과정</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
+<style>
+  :root{
+    --navy:#0B192B;
+    --navy-800:#0f2238;
+    --navy-700:#152c48;
+    --navy-600:#1d3a5c;
+    --accent:#2866E8;
+    --accent-600:#1f53c4;
+    --accent-100:#e8f0ff;
+    --ink:#101521;
+    --muted:#5c6678;
+    --muted-2:#8793a6;
+    --line:#e4e8ef;
+    --bg:#ffffff;
+    --bg-alt:#f6f8fb;
+    --radius-lg:20px;
+    --radius-md:14px;
+    --radius-sm:10px;
+    --shadow-sm: 0 1px 2px rgba(15,23,42,.04), 0 1px 1px rgba(15,23,42,.03);
+    --shadow-md: 0 12px 28px rgba(15,23,42,.08);
+    --shadow-lg: 0 24px 48px rgba(15,23,42,.12);
+    --maxw:1200px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Pretendard Variable","Pretendard","Apple SD Gothic Neo","Malgun Gothic",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    -webkit-font-smoothing:antialiased;
+    min-width:1440px;
+  }
+  img,svg{display:block;}
+  a{color:inherit;text-decoration:none;}
+  ul{margin:0;padding:0;list-style:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px;}
+  section{position:relative;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:13px;font-weight:600;color:var(--accent);
+    letter-spacing:.02em;margin-bottom:16px;
+  }
+  .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);}
+  h1,h2,h3{margin:0;font-weight:700;letter-spacing:-0.01em;}
+  .section-head{max-width:720px;margin:0 auto 56px;text-align:center;}
+  .section-head h2{font-size:34px;line-height:1.35;color:var(--ink);}
+  .section-head p{margin:16px 0 0;font-size:16px;line-height:1.7;color:var(--muted);}
+  .section-head.light h2,.section-head.light p{color:#fff;}
+  .section-head.light p{color:rgba(255,255,255,.72);}
+
+  /* buttons */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    height:52px;padding:0 28px;border-radius:999px;font-size:15px;font-weight:600;
+    border:1.5px solid transparent;cursor:pointer;white-space:nowrap;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 10px 24px rgba(40,102,232,.28);}
+  .btn-primary:hover{background:var(--accent-600);}
+  .btn-outline{background:#fff;color:var(--ink);border-color:var(--line);}
+  .btn-outline:hover{border-color:var(--ink);}
+  .btn-ghost-light{background:transparent;color:#fff;border-color:rgba(255,255,255,.4);}
+  .btn-ghost-light:hover{border-color:#fff;background:rgba(255,255,255,.08);}
+  .btn-dark{background:var(--navy);color:#fff;}
+  .btn-dark:hover{background:#000;}
+  .btn-sm{height:38px;padding:0 18px;font-size:13.5px;}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;}
+
+  /* ---------- SITE HEADER (static image) ---------- */
+  .site-header-img{position:relative;width:100%;height:127px;overflow:hidden;}
+  .site-header-img img{position:absolute;left:50%;top:0;width:1900px;max-width:none;height:auto;transform:translateX(-50%);}
+
+  /* ---------- STICKY SUB-NAV (quick jump tabs) ---------- */
+  .subnav{
+    position:sticky;top:0;z-index:49;height:48px;
+    background:#102879;display:flex;align-items:center;
+  }
+  .subnav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%;}
+  .subnav-tabs{display:flex;gap:36px;height:100%;}
+  .subnav-tabs a{
+    display:flex;align-items:center;height:100%;font-size:14.5px;font-weight:700;
+    color:rgba(255,255,255,.72);border-bottom:2px solid transparent;
+  }
+  .subnav-tabs a:hover{color:#fff;border-bottom-color:rgba(255,255,255,.4);}
+  .subnav-cta{
+    display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:rgba(255,255,255,.9);
+    padding-left:28px;border-left:1px solid rgba(255,255,255,.18);height:22px;
+  }
+  .subnav-cta:hover{color:#fff;}
+  .subnav-cta img{width:22px;height:22px;flex:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:720px;display:flex;align-items:center;justify-content:center;
+    overflow:hidden;background:#05070d;
+    background-image:linear-gradient(180deg, rgba(4,8,16,.45) 0%, rgba(4,8,16,.3) 45%, rgba(4,8,16,.75) 100%),
+      url('assets/hero-visual.webp');
+    background-size:cover;background-position:center;
+  }
+  .hero .wrap{position:relative;z-index:2;display:flex;justify-content:center;}
+  .hero-content{
+    max-width:720px;text-align:center;padding:52px 64px;border-radius:28px;
+    background:rgba(6,11,22,.52);backdrop-filter:blur(10px) saturate(140%);
+    border:1px solid rgba(255,255,255,.1);box-shadow:0 30px 60px rgba(0,0,0,.35);
+  }
+  .hero-content .eyebrow{justify-content:center;color:#8fb4ff;}
+  .hero h1{font-size:44px;line-height:1.32;color:#fff;}
+  .hero p.sub{margin:22px auto 0;font-size:16px;line-height:1.75;color:rgba(255,255,255,.78);max-width:520px;}
+  .hero .cta-row{justify-content:center;margin-top:34px;}
+
+  /* ---------- LEARNER STORIES ---------- */
+  .stories{padding:120px 0;background:var(--bg-alt);}
+  .player{
+    max-width:760px;margin:0 auto;border-radius:var(--radius-lg);overflow:hidden;
+    box-shadow:var(--shadow-lg);background:var(--navy);
+  }
+  .player-stage{
+    position:relative;aspect-ratio:16/9;
+    background:
+      radial-gradient(60% 80% at 20% 30%, rgba(40,102,232,.35), transparent 60%),
+      radial-gradient(60% 80% at 80% 70%, rgba(40,102,232,.25), transparent 60%),
+      linear-gradient(160deg,#10203a 0%, #0b1627 70%);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .player-figures{position:absolute;bottom:0;left:0;right:0;display:flex;justify-content:center;gap:54px;opacity:.9;}
+  .play-btn{
+    width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.14);
+    border:1.5px solid rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center;
+    backdrop-filter:blur(2px);z-index:2;
+  }
+  .player-caption{position:absolute;left:24px;right:24px;bottom:18px;z-index:2;
+    font-size:14px;color:#fff;text-align:center;text-shadow:0 1px 3px rgba(0,0,0,.5);}
+  .player-bar{height:56px;display:flex;align-items:center;gap:14px;padding:0 20px;color:#dbe4f5;}
+  .player-bar .track{flex:1;height:4px;border-radius:2px;background:rgba(255,255,255,.25);position:relative;}
+  .player-bar .track::after{content:"";position:absolute;left:0;top:0;bottom:0;width:38%;background:var(--accent);border-radius:2px;}
+  .player-bar .time{font-size:12.5px;color:#aebcd6;}
+  .disclaimer{max-width:760px;margin:16px auto 0;text-align:center;font-size:12.5px;color:var(--muted-2);}
+  .stories .cta-row{justify-content:center;margin-top:36px;}
+
+  /* ---------- WHY NOW (dark, compact) ---------- */
+  .why-now{padding:104px 0;background:var(--navy);color:#fff;}
+  .policy-hero{max-width:720px;margin:0 auto;text-align:center;}
+  .policy-seal{
+    width:64px;height:64px;border-radius:50%;margin:0 auto 18px;position:relative;
+    background:rgba(143,180,255,.12);border:1.5px solid rgba(143,180,255,.5);
+    display:flex;align-items:center;justify-content:center;color:#9fc0ff;
+  }
+  .policy-seal::before{
+    content:'';position:absolute;inset:-7px;border-radius:50%;border:1px dashed rgba(143,180,255,.35);
+  }
+  .policy-hero h2{font-size:34px;line-height:1.32;color:#fff;font-weight:800;}
+  .policy-hero > p{margin:16px auto 0;font-size:14.5px;line-height:1.7;color:#aebdd8;max-width:520px;}
+  .policy-banner-tags{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:22px 0 0;}
+  .policy-banner-tags span{font-size:12.5px;font-weight:700;color:#dce5f7;border:1px solid rgba(255,255,255,.3);
+    background:rgba(255,255,255,.04);border-radius:999px;padding:7px 16px;}
+  .policy-pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:22px 0 0;}
+  .policy-pill{font-size:12px;line-height:1.5;color:#c3cfe6;background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:9px 16px;}
+  .policy-pill b{color:#fff;margin-right:5px;}
+
+  /* ---------- AI STATS (light, social proof) ---------- */
+  .ai-stats{padding:104px 0;background:#fff;}
+  .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1120px;margin:0 auto;}
+  .kpi-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius-md);
+    padding:30px 26px;box-shadow:var(--shadow-sm);
+  }
+  .kpi-num{font-size:38px;font-weight:800;color:var(--accent-600);letter-spacing:-.02em;}
+  .kpi-label{margin-top:10px;font-size:15px;font-weight:700;color:var(--ink);}
+  .kpi-sub{margin-top:6px;font-size:12.5px;color:var(--muted);}
+  .kpi-src{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--muted-2);}
+  .source-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1120px;margin:28px auto 0;}
+  .source-card{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    border:1px solid var(--line);background:#fff;border-radius:999px;padding:13px 18px;font-size:13px;color:var(--muted);
+  }
+  .source-card svg{flex:none;opacity:.6;color:var(--muted-2);}
+
+  /* ---------- WHY GOV-FUNDED TRAINING (comparison) ---------- */
+  .gov-compare{padding:104px 0;background:var(--bg-alt);}
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:920px;margin:0 auto;}
+  .compare-card{border-radius:var(--radius-md);padding:28px 26px;}
+  .compare-card.neg{background:#fff;border:1px solid var(--line);}
+  .compare-card.pos{background:var(--accent-100);border:1px solid #c7d9fb;}
+  .compare-title{font-size:15.5px;font-weight:800;color:var(--ink);margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+  .compare-title .tag{font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;}
+  .compare-card.neg .tag{background:var(--bg-alt);color:var(--muted);}
+  .compare-card.pos .tag{background:var(--accent);color:#fff;}
+  .compare-list{display:flex;flex-direction:column;gap:13px;}
+  .compare-list div{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.6;color:var(--muted);}
+  .compare-card.pos .compare-list div{color:#1f3a73;}
+  .compare-list svg{flex:none;margin-top:2px;}
+  .compare-card.neg svg{color:var(--muted-2);}
+  .compare-card.pos svg{color:var(--accent);}
+  .compare-foot{text-align:center;margin:18px auto 40px;font-size:12px;color:var(--muted-2);}
+  .gov-compare .cta-row{justify-content:center;}
+
+  /* ---------- K-DIGITAL CREDIT (standalone) ---------- */
+  .credit-section{padding:100px 0;background:#0a1120;}
+  .credit-hero{max-width:720px;margin:0 auto;text-align:center;}
+  .credit-hero-icon{
+    width:76px;height:76px;border-radius:50%;margin:0 auto 22px;background:rgba(255,209,102,.12);
+    border:1.5px solid rgba(255,209,102,.4);display:flex;align-items:center;justify-content:center;color:#ffd166;
+  }
+  .credit-hero-badge{
+    display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.03em;color:#0B192B;
+    background:#ffd166;border-radius:999px;padding:7px 18px;margin-bottom:20px;
+  }
+  .credit-hero h2{font-size:32px;line-height:1.35;color:#fff;font-weight:800;}
+  .credit-hero > p{margin:18px auto 0;font-size:15px;line-height:1.8;color:#c3cfe6;max-width:600px;}
+  .credit-hero p strong{color:#ffd166;}
+  .credit-bar{max-width:520px;margin:36px auto 10px;height:12px;border-radius:999px;background:rgba(255,255,255,.08);
+    position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.1);}
+  .credit-bar-fill{position:absolute;left:0;top:0;bottom:0;width:38%;border-radius:999px;
+    background:linear-gradient(90deg,#ffd166,#ff9f4d);}
+  .credit-bar-fill::after{
+    content:'';position:absolute;right:-1px;top:-4px;bottom:-4px;width:2px;background:#fff;opacity:.8;
+  }
+  .credit-bar-ghost{position:absolute;left:38%;right:0;top:0;bottom:0;
+    background:repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 6px, transparent 6px 12px);}
+  .credit-bar-labels{max-width:520px;margin:0 auto 36px;display:flex;justify-content:space-between;font-size:11.5px;color:#8798b8;}
+  .credit-bar-labels span:last-child{color:#ff9f4d;font-weight:700;}
+  .credit-points{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:36px;}
+  .credit-points div{display:flex;align-items:center;gap:8px;font-size:13.5px;color:#dce5f7;font-weight:600;}
+  .credit-points svg{flex:none;color:#ffd166;}
+  .credit-hero .cta-row{justify-content:center;}
+
+  /* ---------- COURSE FINDER QUIZ ---------- */
+  .finder{padding:120px 0;background:linear-gradient(180deg,#fff 0%, var(--accent-100) 100%);}
+  .quiz-card{
+    max-width:680px;margin:0 auto;background:#fff;border-radius:28px;box-shadow:var(--shadow-lg);
+    border:1px solid var(--line);padding:48px 56px;position:relative;overflow:hidden;min-height:360px;
+  }
+  .quiz-dots{display:flex;gap:8px;justify-content:center;margin-bottom:28px;}
+  .quiz-dots span{width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .2s ease,transform .2s ease;}
+  .quiz-dots span.on{background:var(--accent);transform:scale(1.2);}
+  .quiz-step{display:none;}
+  .quiz-step.active{display:block;animation:qfade .35s ease;}
+  @keyframes qfade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  .quiz-q-count{font-size:12.5px;font-weight:700;color:var(--accent);text-align:center;letter-spacing:.04em;margin-bottom:10px;}
+  .quiz-q{font-size:22px;font-weight:700;text-align:center;color:var(--ink);margin-bottom:32px;line-height:1.4;}
+  .quiz-options{display:flex;flex-direction:column;gap:12px;}
+  .quiz-opt{
+    display:flex;align-items:center;gap:14px;padding:16px 20px;border-radius:var(--radius-sm);
+    border:1.5px solid var(--line);cursor:pointer;background:#fff;font-size:15px;font-weight:600;color:var(--ink);
+    transition:border-color .15s ease, background .15s ease, transform .1s ease;
+  }
+  .quiz-opt:hover{border-color:var(--accent);background:var(--accent-100);transform:translateX(2px);}
+  .quiz-opt .emoji{font-size:22px;}
+  .quiz-result{text-align:center;}
+  .quiz-result .result-icon{width:72px;height:72px;border-radius:50%;background:var(--accent-100);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 20px;}
+  .quiz-result-eyebrow{font-size:13px;font-weight:700;color:var(--accent);margin-bottom:8px;}
+  .quiz-result h3{font-size:24px;font-weight:800;color:var(--ink);margin:0 0 12px;}
+  .quiz-result p{font-size:14.5px;line-height:1.7;color:var(--muted);max-width:460px;margin:0 auto 28px;}
+  .quiz-result .cta-row{justify-content:center;}
+  .quiz-retry{display:block;margin-top:16px;font-size:13px;color:var(--muted-2);cursor:pointer;text-decoration:underline;}
+  .finder-sub-cta{text-align:center;margin-top:28px;font-size:13.5px;color:var(--muted);}
+  .finder-sub-cta a{color:var(--accent);font-weight:600;}
+
+  .quiz-tray{
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;
+    max-width:680px;margin:0 auto 20px;min-height:24px;
+  }
+  .quiz-tray-label{font-size:12.5px;font-weight:700;color:var(--muted-2);}
+  .quiz-tray-chip{
+    display:flex;align-items:center;gap:8px;background:var(--accent-100);color:var(--accent-600);
+    font-size:12.5px;font-weight:600;border-radius:999px;padding:6px 8px 6px 14px;
+  }
+  .quiz-tray-chip button{border:none;background:rgba(40,102,232,.18);color:var(--accent-600);
+    width:18px;height:18px;border-radius:50%;cursor:pointer;font-size:12px;line-height:1;}
+  .quiz-limit-note{
+    text-align:center;font-size:12.5px;color:var(--muted-2);max-width:460px;margin:0 auto 20px;line-height:1.6;
+  }
+  .reco-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 20px;}
+  .reco-card{
+    border:1.5px solid var(--line);border-radius:var(--radius-sm);padding:18px 16px;text-align:left;
+    position:relative;transition:border-color .15s ease;
+  }
+  .reco-card.picked{border-color:var(--accent);background:var(--accent-100);}
+  .reco-thumb{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
+  .reco-thumb svg{width:20px;height:20px;}
+  .reco-rank{position:absolute;top:14px;right:14px;font-size:11px;font-weight:700;color:var(--muted-2);}
+  .reco-name{font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.4;min-height:40px;}
+  .reco-meta{margin-top:6px;font-size:12px;color:var(--muted-2);}
+  .reco-pick-btn{
+    margin-top:14px;width:100%;height:36px;border-radius:999px;font-size:12.5px;font-weight:700;
+    border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;
+  }
+  .reco-pick-btn.on{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .reco-pick-btn:disabled{opacity:.45;cursor:not-allowed;}
+  .quiz-result-actions{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:8px;}
+  .quiz-result-actions .cta-row{justify-content:center;flex-wrap:wrap;}
+
+  /* ---------- COURSES ---------- */
+  .courses{padding:120px 0;}
+  .tabs{display:flex;justify-content:center;gap:8px;margin-bottom:48px;flex-wrap:wrap;}
+  .tab{
+    padding:11px 22px;border-radius:999px;font-size:14.5px;font-weight:600;color:var(--muted);
+    border:1.5px solid var(--line);cursor:pointer;background:#fff;
+  }
+  .tab.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .course-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .course-page{display:contents;}
+  .course-card{
+    border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;background:#fff;
+    box-shadow:var(--shadow-sm);transition:box-shadow .2s ease, transform .2s ease;
+  }
+  .course-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
+  @keyframes cardPulse{0%,100%{box-shadow:0 0 0 0 rgba(40,102,232,.35);}50%{box-shadow:0 0 0 10px rgba(40,102,232,0);}}
+  .course-card.highlight{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent);animation:cardPulse 1.4s ease-out 2;}
+  .course-thumb{
+    position:relative;height:148px;display:flex;align-items:center;justify-content:center;
+  }
+  .course-thumb svg{width:56px;height:56px;}
+  .badge-new{
+    position:absolute;top:14px;left:14px;background:#fff;color:var(--accent);
+    font-size:11px;font-weight:800;letter-spacing:.03em;padding:4px 10px;border-radius:999px;
+  }
+  .course-body{padding:20px 22px 24px;}
+  .course-cat{font-size:12px;font-weight:600;color:var(--accent);margin-bottom:8px;}
+  .course-name{font-size:17px;font-weight:700;line-height:1.4;min-height:48px;color:var(--ink);}
+  .course-tagline{margin-top:6px;font-size:13px;color:var(--muted-2);line-height:1.5;}
+  .course-meta{display:flex;gap:10px;margin-top:16px;font-size:13px;color:var(--muted);}
+  .course-meta b{color:var(--ink);font-weight:600;}
+  .course-foot{
+    margin-top:18px;padding-top:16px;border-top:1px solid var(--line);
+    display:flex;align-items:center;justify-content:space-between;font-size:14px;font-weight:600;color:var(--ink);
+  }
+  .courses .cta-row{justify-content:center;margin-top:48px;}
+
+  /* thumb gradients per category */
+  .thumb-mobility{background:linear-gradient(135deg,#1d3a5c,#2866E8);}
+  .thumb-print{background:linear-gradient(135deg,#1f4d3d,#1f9d73);}
+  .thumb-robot{background:linear-gradient(135deg,#3a2c63,#7a5cf0);}
+  .thumb-web{background:linear-gradient(135deg,#1d4e5c,#1fa3c0);}
+  .thumb-ppt{background:linear-gradient(135deg,#6b3a16,#e8893a);}
+  .thumb-drone{background:linear-gradient(135deg,#223a66,#4f7fe0);}
+  .thumb-ev{background:linear-gradient(135deg,#2c4a3a,#3fae7c);}
+  .thumb-auto{background:linear-gradient(135deg,#5c1d3a,#c23f6f);}
+  .thumb-ai{background:linear-gradient(135deg,#1e2b52,#44519e);}
+
+  /* ---------- LEARN BY DOING ---------- */
+  .doing{padding:120px 0;background:var(--bg-alt);}
+  .reel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .reel-card{
+    position:relative;aspect-ratio:4/3;border-radius:var(--radius-md);overflow:hidden;
+    display:flex;align-items:flex-end;box-shadow:var(--shadow-sm);
+  }
+  .reel-card .tag{position:relative;z-index:2;padding:18px 20px;color:#fff;font-weight:700;font-size:15px;}
+  .reel-card .play-mini{position:absolute;top:16px;right:16px;z-index:2;width:34px;height:34px;border-radius:50%;
+    background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;}
+  .result-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px;}
+  .result-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);}
+  .browser-chrome{height:30px;background:#eef1f6;display:flex;align-items:center;gap:6px;padding:0 12px;border-bottom:1px solid var(--line);}
+  .browser-chrome i{width:8px;height:8px;border-radius:50%;background:#d6dbe4;}
+  .result-stage{height:190px;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#eef3ff,#f8fafd);}
+  .result-label{padding:16px 20px;font-size:14px;font-weight:600;border-top:1px solid var(--line);}
+  .doing .cta-row{justify-content:center;margin-top:48px;}
+
+  /* ---------- WHY MIRACLE ---------- */
+  .miracle{padding:120px 0;}
+  .benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1100px;margin:0 auto;}
+  .benefit-card{text-align:center;padding:40px 28px;border:1px solid var(--line);border-radius:var(--radius-md);}
+  .benefit-icon{width:56px;height:56px;border-radius:16px;background:var(--accent-100);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 22px;}
+  .benefit-title{font-size:17px;font-weight:700;}
+  .benefit-desc{margin-top:8px;font-size:13.5px;color:var(--muted);line-height:1.6;}
+  .scope-badge{
+    max-width:1100px;margin:28px auto 0;display:flex;align-items:center;gap:10px;justify-content:center;
+    background:var(--accent-100);color:var(--accent-600);font-size:13.5px;font-weight:600;
+    border-radius:999px;padding:12px 22px;
+  }
+  .miracle .cta-row{justify-content:center;margin-top:44px;}
+
+  /* ---------- HOW TO START ---------- */
+  .start{padding:120px 0;background:var(--bg-alt);}
+  .steps{display:flex;align-items:flex-start;justify-content:space-between;max-width:900px;margin:0 auto 52px;}
+  .step{display:flex;flex-direction:column;align-items:center;gap:12px;width:140px;text-align:center;}
+  .step-num{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;
+    display:flex;align-items:center;justify-content:center;font-size:16px;}
+  .step-label{font-size:14.5px;font-weight:600;color:var(--ink);}
+  .step-line{flex:1;height:1.5px;background:var(--line);margin-top:22px;}
+  .start .cta-row{justify-content:center;margin-bottom:56px;}
+  .faq{max-width:820px;margin:0 auto;}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{display:flex;align-items:center;justify-content:space-between;padding:22px 4px;cursor:pointer;font-size:15.5px;font-weight:600;}
+  .faq-q svg{transition:transform .2s ease;flex:none;color:var(--muted);}
+  .faq-item.open .faq-q svg{transform:rotate(180deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+  .faq-item.open .faq-a{max-height:140px;}
+  .faq-a p{margin:0 4px 22px;font-size:14px;line-height:1.7;color:var(--muted);}
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{padding:110px 0;background:#fff;}
+  .final-banner{
+    max-width:1120px;margin:0 auto;text-align:center;padding:72px 40px;border-radius:28px;
+    background:linear-gradient(135deg, var(--accent-100), #fff 60%);
+    border:1px solid #dce7ff;
+  }
+  .final-banner h2{font-size:32px;color:var(--navy);}
+  .final-banner p{margin:16px 0 36px;font-size:16px;color:var(--muted);}
+  .final-banner .cta-row{justify-content:center;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy);color:#9fb0cc;padding:56px 0 40px;}
+  .foot-top{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.12);}
+  .foot-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .foot-info{font-size:13px;line-height:1.9;color:#8395b4;}
+  .foot-links{display:flex;gap:28px;}
+  .foot-links a{font-size:13.5px;color:#cdd8ec;}
+  .foot-links a:hover{color:#fff;}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-size:12.5px;color:#64759a;}
+  .sns{display:flex;gap:10px;}
+  .sns a{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;}
+
+  /* ---------- PRINT ---------- */
+  @media print{
+    @page{ size:420mm 297mm; margin:14mm; }
+    html,body{min-width:0;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;color-adjust:exact;}
+    .subnav{display:none;}
+    section{break-inside:avoid;page-break-after:always;}
+    footer{page-break-after:auto;}
+    .stories,.why-now,.ai-stats,.gov-compare,.credit-section,.finder,.courses,.doing,.miracle,.start,.final-cta{padding:36px 0;}
+    .hero{min-height:0;padding:60px 0;}
+    .hero-content{padding:36px 40px;}
+    .quiz-step{display:block !important;break-inside:avoid;margin-bottom:18px;}
+    .quiz-step:not([data-step="1"]){border-top:1px solid var(--line);padding-top:18px;}
+    .quiz-dots{display:none;}
+    .quiz-card{box-shadow:none;border:1px solid var(--line);padding:28px 32px;}
+    .kpi-num{font-size:34px;}
+    .course-grid{display:block;}
+    .course-page{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+    .course-page + .course-page{break-before:page;padding-top:28px;}
+    .faq-a{max-height:none !important;}
+    .faq-a p{margin-bottom:10px;}
+    .steps{margin-bottom:28px;}
+    .start .cta-row{margin-bottom:24px;}
+    .faq{display:grid;grid-template-columns:1fr 1fr;column-gap:40px;align-items:start;}
+    .faq-q{padding:14px 4px;font-size:14px;}
+    .faq-a p{font-size:12.5px;}
+    .play-btn, .reel-card .play-mini{display:none;}
+  }
+  @media print and (max-width: 0){ @page{ size:297mm 210mm; } }
+</style>
+</head>
+<body>
+
+<!-- ICON SPRITE -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M3 13l1.5-4.5A2 2 0 0 1 6.4 7h11.2a2 2 0 0 1 1.9 1.5L21 13M4 13h16v4a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1H7v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-4Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="7.5" cy="14.5" r="1.3" fill="currentColor"/><circle cx="16.5" cy="14.5" r="1.3" fill="currentColor"/></symbol>
+    <symbol id="i-cube" viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M4.5 7.5 12 12l7.5-4.5M12 12v9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arm" viewBox="0 0 24 24"><path d="M5 20h4M7 20v-5l4-2V7M11 7h3a2 2 0 0 1 2 2v1l3 2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="19" cy="13" r="1.6" fill="currentColor"/></symbol>
+    <symbol id="i-web" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="13" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 9h18M8 21h8M12 18v3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+    <symbol id="i-ppt" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 20h18M8 9h4a2 2 0 0 1 0 4H8V9Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+    <symbol id="i-drone" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6 6 10 10M18 6 14 10M6 18l4-4M18 18l-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="6" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="6" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="18" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="18" cy="18" r="2" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 3v2.4M12 18.6V21M21 12h-2.4M5.4 12H3M18.4 5.6l-1.7 1.7M7.3 16.7l-1.7 1.7M18.4 18.4l-1.7-1.7M7.3 7.3 5.6 5.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+    <symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5-11-6.5Z" fill="currentColor"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="11" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 9h18v3H3zM12 9v11" stroke="currentColor" stroke-width="1.5"/><path d="M12 9S9.5 3.5 7 4.5C5 5.3 6 9 12 9ZM12 9s2.5-5.5 5-4.5c2 .8 1 4.3-5 4.5Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+    <symbol id="i-keep" viewBox="0 0 24 24"><path d="M12 21s-7-4.6-9.2-9A5.4 5.4 0 0 1 12 6.4 5.4 5.4 0 0 1 21.2 12c-2.2 4.4-9.2 9-9.2 9Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+    <symbol id="i-repeat" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 13.7-5.7L20 8M20 4v4h-4M20 12a8 8 0 0 1-13.7 5.7L4 16M4 20v-4h4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 5h5v5M19 5l-8 8M8 5H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9V6l7-3Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 12.2l2 2 4-4.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-hourglass" viewBox="0 0 24 24"><path d="M7 3h10M7 21h10M7 3c0 4 3 5 5 6-2 1-5 2-5 6M17 3c0 4-3 5-5 6 2 1 5 2 5 6M7 21c0-4 3-5 5-6M17 21c0-4-3-5-5-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M15 9l-2 6-4-2 2-6 4 2Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 12.3l2.6 2.6L16 9.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M9.5 9.5l5 5M14.5 9.5l-5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  </defs>
+</svg>
+
+<div class="site-header-img">
+  <img src="assets/site-header.png" alt="미라클 평생교육원">
+</div>
+
+<nav class="subnav" aria-label="빠른 이동">
+  <div class="wrap">
+    <div class="subnav-tabs">
+      <a href="#hero">교육 소개</a>
+      <a href="#doing">학습 소개</a>
+      <a href="#courses">커리큘럼</a>
+      <a href="#start">자주묻는 질문</a>
+    </div>
+    <a href="#courses" class="subnav-cta"><img src="assets/kdigital-symbol.png" alt="">국민내일배움카드 교육 전체</a>
+  </div>
+</nav>
+
+<!-- 01 HERO -->
+<section class="hero" id="hero">
+  <div class="wrap">
+    <div class="hero-content">
+      <div class="eyebrow">K-디지털 기초역량훈련</div>
+      <h1>배우는 기술을 넘어,<br>직접 가동시키는 미래.</h1>
+      <p class="sub">AI·자율주행·로봇·3D프린팅까지, 모든 시스템이 지금 가동을 시작합니다.<br>처음이라도 괜찮습니다. 궁금했던 기술을 직접 켜고 경험해보세요.</p>
+      <div class="cta-row">
+        <a href="#courses" class="btn btn-primary">교육과정 보기 →</a>
+        <a href="#why-now" class="btn btn-outline">왜 지금 배워야 할까요?</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 LEARNER STORIES -->
+<section class="stories" id="stories">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">LEARNER STORIES</div>
+      <h2>AI도, 로봇도 처음인데… 저도 할 수 있을까요?</h2>
+      <p>전공도, 나이도, 경험도 달라도 새로운 기술에 대한 호기심은 같습니다.<br>누구나 가질 수 있는 고민과 기대를 한 편의 영상으로 만나보세요.</p>
+    </div>
+    <div class="player">
+      <div class="player-stage">
+        <div class="player-figures">
+          <svg width="64" height="110" viewBox="0 0 64 110" fill="none"><path d="M32 46c9 0 16 8 16 20v38H16V66c0-12 7-20 16-20Z" fill="rgba(255,255,255,.14)"/><circle cx="32" cy="26" r="16" fill="rgba(255,255,255,.18)"/></svg>
+          <svg width="64" height="110" viewBox="0 0 64 110" fill="none"><path d="M32 46c9 0 16 8 16 20v38H16V66c0-12 7-20 16-20Z" fill="rgba(255,255,255,.22)"/><circle cx="32" cy="26" r="16" fill="rgba(255,255,255,.26)"/></svg>
+          <svg width="64" height="110" viewBox="0 0 64 110" fill="none"><path d="M32 46c9 0 16 8 16 20v38H16V66c0-12 7-20 16-20Z" fill="rgba(255,255,255,.14)"/><circle cx="32" cy="26" r="16" fill="rgba(255,255,255,.18)"/></svg>
+        </div>
+        <div class="play-btn"><svg width="26" height="26" viewBox="0 0 24 24"><use href="#i-play" fill="#fff"/></svg></div>
+        <div class="player-caption">"전공도 나이도 달랐지만, 저도 직접 해볼 수 있었어요."</div>
+      </div>
+      <div class="player-bar">
+        <svg width="18" height="18" viewBox="0 0 24 24"><use href="#i-play" fill="#dbe4f5"/></svg>
+        <span class="time">00:12</span>
+        <div class="track"></div>
+        <span class="time">00:52</span>
+      </div>
+    </div>
+    <p class="disclaimer">AI로 제작한 가상 학습자 스토리이며, 실제 수강 후기가 아닙니다.</p>
+    <div class="cta-row"><a href="#finder" class="btn btn-primary">나에게 맞는 교육과정 찾기</a></div>
+  </div>
+</section>
+
+<!-- 03 WHY NOW -->
+<section class="why-now" id="why-now">
+  <div class="wrap">
+    <div class="eyebrow" style="color:#8fb4ff;justify-content:center;width:100%">WHY NOW · GOVERNMENT POLICY</div>
+    <div class="policy-hero">
+      <div class="policy-seal"><svg width="24" height="24" viewBox="0 0 24 24"><use href="#i-shield" stroke="currentColor"/></svg></div>
+      <h2>대한민국 정부가 추진하는<br>공식 AI 역량 강화 정책입니다</h2>
+      <p>AI 활용 능력은 이제 전 직업의 공통 역량입니다. 국가가 직접 나서 AI 인재를 키우고 있습니다.</p>
+      <div class="policy-banner-tags"><span>고용노동부</span><span>과학기술정보통신부</span><span>국민내일배움카드</span></div>
+      <div class="policy-pills">
+        <span class="policy-pill"><b>전 직업 공통역량</b>고용노동부 2026.04.28 개편</span>
+        <span class="policy-pill"><b>100만 명+</b>2026~2030 AI 직업훈련 지원 목표</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI STATS -->
+<section class="ai-stats" id="ai-stats">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">BY THE NUMBERS</div>
+      <h2>이미 많은 국민이 AI를 쓰고 있습니다</h2>
+      <p>정부 공식 통계로 확인한 AI 확산 현황입니다.</p>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-num">67.0%</div>
+        <div class="kpi-label">국민 AI 서비스 경험률</div>
+        <div class="kpi-sub">생성형 AI 44.5% · 유료 구독 7.9%</div>
+        <div class="kpi-src">NIA 「2025 인터넷이용실태조사」</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-num">14.3%</div>
+        <div class="kpi-label">신기술 도입 기업 비율</div>
+        <div class="kpi-sub">해당 기업 고용 비중 33.3%</div>
+        <div class="kpi-src">통계개발원 「2024 통계플러스」</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-num">9.2% / 2.9%</div>
+        <div class="kpi-label">기업 규모별 AI 도입률</div>
+        <div class="kpi-sub">300인 이상 / 300인 미만</div>
+        <div class="kpi-src">통계개발원 「2024 통계플러스」</div>
+      </div>
+    </div>
+    <div class="source-grid">
+      <a class="source-card" href="https://www.moel.go.kr/news/enews/report/enewsView.do?news_seq=18752" target="_blank" rel="noopener">고용노동부 · AI+역량 Up 프로젝트 <svg width="14" height="14" viewBox="0 0 24 24"><use href="#i-external" stroke="currentColor"/></svg></a>
+      <a class="source-card" href="https://www.msit.go.kr/bbs/view.do?bbsSeqNo=94&nttSeqNo=3187614&sCode=user" target="_blank" rel="noopener">과기정통부 · 모두의 AI 성장사다리 <svg width="14" height="14" viewBox="0 0 24 24"><use href="#i-external" stroke="currentColor"/></svg></a>
+      <a class="source-card" href="https://nia.or.kr/site/nia_kor/ex/bbs/View.do?bcIdx=29198&cbIdx=99870" target="_blank" rel="noopener">NIA · 2025 인터넷이용실태조사 <svg width="14" height="14" viewBox="0 0 24 24"><use href="#i-external" stroke="currentColor"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY GOV-FUNDED TRAINING -->
+<section class="gov-compare" id="gov-compare">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">WHY MIRACLE</div>
+      <h2>같은 역량, 다른 부담<br>왜 국비교육일까요?</h2>
+      <p>사교육과 국비교육, 선택에 따라 부담은 달라집니다.</p>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-card neg">
+        <div class="compare-title"><span class="tag">사교육</span> 학원·사설 AI 과정</div>
+        <div class="compare-list">
+          <div><svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-x" stroke="currentColor"/></svg> 정부 지원 없이 수강료 전액을 본인이 부담</div>
+          <div><svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-x" stroke="currentColor"/></svg> 실습 교구·재료비 등 추가 비용이 발생하기 쉬움</div>
+          <div><svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-x" stroke="currentColor"/></svg> 과정이 끝나면 취업·지원 연계 없이 수료로 종료</div>
+        </div>
+      </div>
+      <div class="compare-card pos">
+        <div class="compare-title"><span class="tag">국비교육</span> 미라클평생교육원 K-디지털</div>
+        <div class="compare-list">
+          <div><svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-check" stroke="currentColor"/></svg> 국민내일배움카드 등 정부 지원으로 본인 부담 완화</div>
+          <div><svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-check" stroke="currentColor"/></svg> 신규 Pre-KDT 3개 과정은 실습 교구 무상 제공·반납 없이 소장</div>
+          <div><svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-check" stroke="currentColor"/></svg> 정부 정책 기준에 맞춘 커리큘럼으로 실무 역량까지 체계적으로 학습</div>
+        </div>
+      </div>
+    </div>
+    <div class="compare-foot">정확한 지원 대상·본인부담금은 과정 상담을 통해 확인하실 수 있습니다.</div>
+    <div class="cta-row"><a href="#courses" class="btn btn-primary">지금 시작할 수 있는 과정 보기</a></div>
+  </div>
+</section>
+
+<!-- K-DIGITAL CREDIT (URGENCY) -->
+<section class="credit-section" id="credit">
+  <div class="wrap">
+    <div class="credit-hero">
+      <div class="credit-hero-icon"><svg width="30" height="30" viewBox="0 0 24 24"><use href="#i-hourglass" stroke="currentColor"/></svg></div>
+      <div class="credit-hero-badge">소멸형 지원금 · 환급 아님</div>
+      <h2>K-디지털 크레딧, 안 쓰면 그대로 사라지는 내 돈입니다</h2>
+      <p>정부가 국민의 AI·디지털 역량 강화를 위해 지급하는 교육 지원금이에요. <strong>신청해두고 기간 안에 사용하지 않으면 그대로 소멸</strong>됩니다. 현금으로 돌려받을 수 없고, 배우는 데 쓰지 않으면 고스란히 손해인 혜택이에요.</p>
+      <div class="credit-bar"><div class="credit-bar-fill"></div><div class="credit-bar-ghost"></div></div>
+      <div class="credit-bar-labels"><span>크레딧 신청</span><span>지금, 사용 가능</span><span>기간 종료 · 자동 소멸</span></div>
+      <div class="credit-points">
+        <div><svg width="18" height="18" viewBox="0 0 24 24"><use href="#i-check" stroke="currentColor"/></svg> 신청 절차는 간단해요</div>
+        <div><svg width="18" height="18" viewBox="0 0 24 24"><use href="#i-hourglass" stroke="currentColor"/></svg> 기간 내 미사용 시 소멸돼요</div>
+        <div><svg width="18" height="18" viewBox="0 0 24 24"><use href="#i-compass" stroke="currentColor"/></svg> AI 역량 강화에 바로 쓰세요</div>
+      </div>
+      <div class="cta-row"><a href="#start" class="btn btn-primary">크레딧 사용 방법 확인하기</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSE FINDER QUIZ -->
+<section class="finder" id="finder">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">COURSE FINDER</div>
+      <h2>어떤 교육을 받을지 잘 모르겠다면?</h2>
+      <p>4가지 질문에 답하면 9개 과정 중 나에게 가장 맞는 과정을 콕 집어드려요.<br>미라클평생교육원은 <strong>한 번에 최대 2개 과정</strong>까지 함께 신청하실 수 있어요.</p>
+    </div>
+    <div class="quiz-tray" id="quizTray"></div>
+    <div class="quiz-card" id="quizCard">
+
+      <div class="quiz-step active" data-step="1">
+        <div class="quiz-dots"><span class="on"></span><span></span><span></span><span></span></div>
+        <div class="quiz-q-count">Q1 / 4</div>
+        <div class="quiz-q">가장 눈길이 가는 장면은?</div>
+        <div class="quiz-options">
+          <div class="quiz-opt" data-score="mobility:2,ev:1,drone:1"><span class="emoji">🚗</span> 자동차·드론이 스스로 움직이는 모습</div>
+          <div class="quiz-opt" data-score="robotArm:2"><span class="emoji">🦾</span> 로봇팔이 정교하게 작업하는 모습</div>
+          <div class="quiz-opt" data-score="print3d:2"><span class="emoji">🧊</span> 3D프린터가 입체 모형을 만들어내는 모습</div>
+        </div>
+      </div>
+
+      <div class="quiz-step" data-step="2">
+        <div class="quiz-dots"><span class="on"></span><span class="on"></span><span></span><span></span></div>
+        <div class="quiz-q-count">Q2 / 4</div>
+        <div class="quiz-q">업무나 일상에 바로 쓰고 싶은 결과물은?</div>
+        <div class="quiz-options">
+          <div class="quiz-opt" data-score="webAI:2"><span class="emoji">🌐</span> 나만의 웹사이트·홈페이지</div>
+          <div class="quiz-opt" data-score="pptAI:2"><span class="emoji">📊</span> 발표자료·프레젠테이션</div>
+          <div class="quiz-opt" data-score="automation:2"><span class="emoji">⚙️</span> 반복되는 업무의 자동화</div>
+        </div>
+      </div>
+
+      <div class="quiz-step" data-step="3">
+        <div class="quiz-dots"><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div>
+        <div class="quiz-q-count">Q3 / 4</div>
+        <div class="quiz-q">더 끌리는 배움의 방식은?</div>
+        <div class="quiz-options">
+          <div class="quiz-opt" data-score="aiBasic:2,robotArm:1"><span class="emoji">📖</span> 처음부터 차근차근 원리를 이해하는 학습</div>
+          <div class="quiz-opt" data-score="print3d:1,webAI:1,pptAI:1"><span class="emoji">⚡</span> 실습 중심으로 바로 만들어보는 학습</div>
+          <div class="quiz-opt" data-score="mobility:1,ev:1,drone:1,robotArm:1"><span class="emoji">🔧</span> 실제 장비를 직접 조작해보는 학습</div>
+        </div>
+      </div>
+
+      <div class="quiz-step" data-step="4">
+        <div class="quiz-dots"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div>
+        <div class="quiz-q-count">Q4 / 4</div>
+        <div class="quiz-q">지금 나의 상태에 가장 가까운 것은?</div>
+        <div class="quiz-options">
+          <div class="quiz-opt" data-score="mobility:1,robotArm:1,print3d:1,drone:1"><span class="emoji">🤖</span> 기계·로봇에 관심 많은 호기심러</div>
+          <div class="quiz-opt" data-score="webAI:1,pptAI:1,automation:2"><span class="emoji">💼</span> 업무 효율을 높이고 싶은 직장인</div>
+          <div class="quiz-opt" data-score="aiBasic:2"><span class="emoji">🌱</span> AI·코딩을 처음부터 배우고 싶은 입문자</div>
+        </div>
+      </div>
+
+      <div class="quiz-step" data-step="result">
+        <div class="quiz-result">
+          <div class="quiz-result-eyebrow">답변을 분석한 결과, 이 과정들이 잘 맞아요</div>
+          <div class="reco-grid" id="recoGrid"></div>
+          <div class="quiz-limit-note">⏱️ 미라클평생교육원은 <strong>한 번에 최대 2개 과정</strong>까지 함께 신청할 수 있어요. 위 추천 과정 중 2개를 골라도 되고, 1개만 고른 뒤 다른 관심사로 테스트를 한 번 더 해서 나머지 1개를 채워도 좋아요.</div>
+          <div class="quiz-result-actions">
+            <div class="cta-row">
+              <a href="#courses" class="btn btn-primary" id="quizGoBtn">선택한 과정 보러 가기</a>
+              <span class="btn btn-outline" id="quizRetry" style="cursor:pointer">다른 관심사로 1과정 더 찾기</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="finder-sub-cta">정확한 조건이 궁금하다면 <a href="#start">지원 자격 확인하기</a>로 바로 이동하세요.</div>
+  </div>
+</section>
+
+<!-- 04 FIND YOUR COURSE -->
+<section class="courses" id="courses">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">FIND YOUR COURSE</div>
+      <h2>관심 있는 기술부터, 직접 경험해보세요.</h2>
+      <p>로봇을 움직이는 기술부터 AI로 홈페이지와 발표자료를 만드는 실무까지.<br>나의 관심에 맞는 교육을 선택해보세요.</p>
+    </div>
+    <div class="tabs">
+      <div class="tab active" data-filter="all">전체 9</div>
+      <div class="tab" data-filter="physical">피지컬 AI·로봇</div>
+      <div class="tab" data-filter="practical">AI 실무활용</div>
+      <div class="tab" data-filter="basic">AI·코딩 기초</div>
+    </div>
+    <div class="course-grid" id="courseGrid">
+    <div class="course-page">
+
+      <article class="course-card" data-cat="physical" data-course="mobility">
+        <div class="course-thumb thumb-mobility"><span class="badge-new">NEW</span><svg viewBox="0 0 24 24"><use href="#i-car" color="#fff"/></svg></div>
+        <div class="course-body">
+          <div class="course-cat">피지컬 AI·로봇 · Pre-KDT</div>
+          <div class="course-name">미래모빌리티 자율주행의 이해와 실습</div>
+          <div class="course-tagline">움직임의 원리를 이해하고 직접 제어해보세요.</div>
+          <div class="course-meta"><span><b>41h</b></span><span>·</span><span><b>496,000원</b></span></div>
+          <div class="course-foot">과정 자세히 보기 <svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-chevron" stroke="currentColor" style="transform:rotate(-90deg);transform-origin:center"/></svg></div>
+        </div>
+      </article>
+
+      <article class="course-card" data-cat="physical" data-course="print3d">
+        <div class="course-thumb thumb-print"><span class="badge-new">NEW</span><svg viewBox="0 0 24 24"><use href="#i-cube" color="#fff"/></svg></div>
+        <div class="course-body">
+          <div class="course-cat">피지컬 AI·로봇 · Pre-KDT</div>
+          <div class="course-name">3D프린팅 실무와 시제품제작(Fusion)</div>
+          <div class="course-tagline">아이디어가 형태가 되는 과정을 경험하세요.</div>
+          <div class="course-meta"><span><b>41h</b></span><span>·</span><span><b>496,000원</b></span></div>
+          <div class="course-foot">과정 자세히 보기 <svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-chevron" stroke="currentColor" style="transform:rotate(-90deg);transform-origin:center"/></svg></div>
+        </div>
+      </article>
+
+      <article class="course-card" data-cat="physical" data-course="robotArm">
+        <div class="course-thumb thumb-robot"><span class="badge-new">NEW</span><svg viewBox="0 0 24 24"><use href="#i-arm" color="#fff"/></svg></div>
+        <div class="course-body">
+          <div class="course-cat">피지컬 AI·로봇 · Pre-KDT</div>
+          <div class="course-name">AI 로봇팔로 배우는 협동로봇 제어 원리</div>
+          <div class="course-tagline">로봇팔이 움직이는 원리를 직접 알아보세요.</div>
+          <div class="course-meta"><span><b>41h</b></span><span>·</span><span><b>496,000원</b></span></div>
+          <div class="course-foot">과정 자세히 보기 <svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-chevron" stroke="currentColor" style="transform:rotate(-90deg);transform-origin:center"/></svg></div>
+        </div>
+      </article>
+
+      <article class="course-card" data-cat="practical" data-course="webAI">
+        <div class="course-thumb thumb-web"><span class="badge-new">NEW</span><svg viewBox="0 0 24 24"><use href="#i-web" color="#fff"/></svg></div>
+        <div class="course-body">
+          <div class="course-cat">AI 실무활용 · IT 기초역량</div>
+          <div class="course-name">AI로 완성하는 홈페이지</div>
+          <div class="course-tagline">AI와 함께 나만의 웹페이지 제작에 도전하세요.</div>
+          <div class="course-meta"><span><b>20h</b></span><span>·</span><span><b>242,000원</b></span></div>
+          <div class="course-foot">과정 자세히 보기 <svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-chevron" stroke="currentColor" style="transform:rotate(-90deg);transform-origin:center"/></svg></div>
+        </div>
+      </article>
+
+      <article class="course-card" data-cat="practical" data-course="pptAI">
+        <div class="course-thumb thumb-ppt"><span class="badge-new">NEW</span><svg viewBox="0 0 24 24"><use href="#i-ppt" color="#fff"/></svg></div>
+        <div class="course-body">
+          <div class="course-cat">AI 실무활용 · AI 도구활용</div>
+          <div class="course-name">AI로 쉽게 만드는 PPT 끝판왕</div>
+          <div class="course-tagline">기획부터 시각화까지 AI로 발표자료를 만들어보세요.</div>
+          <div class="course-meta"><span><b>16h</b></span><span>·</span><span><b>193,600원</b></span></div>
+          <div class="course-foot">과정 자세히 보기 <svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-chevron" stroke="currentColor" style="transform:rotate(-90deg);transform-origin:center"/></svg></div>
+        </div>
+      </article>
+
+      <article class="course-card" data-cat="physical" data-course="drone">
+        <div class="course-thumb thumb-drone"><svg viewBox="0 0 24 24"><use href="#i-drone" color="#fff"/></svg></div>
+        <div class="course-body">
+          <div class="course-cat">피지컬 AI·로봇 · 운영 과정</div>
+          <div class="course-name">파이썬으로 제어하는 AI드론</div>
+          <div class="course-tagline">코딩과 비행을 연결하는 경험</div>
+          <div class="course-meta"><span>시간·비용 확인 필요</span></div>
+          <div class="course-foot">과정 자세히 보기 <svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-chevron" stroke="currentColor" style="transform:rotate(-90deg);transform-origin:center"/></svg></div>
+        </div>
+      </article>
+
+    </div>
+    <div class="course-page">
+
+      <article class="course-card" data-cat="physical" data-course="ev">
+        <div class="course-thumb thumb-ev"><svg viewBox="0 0 24 24"><use href="#i-car" color="#fff"/></svg></div>
+        <div class="course-body">
+          <div class="course-cat">피지컬 AI·로봇 · 운영 과정</div>
+          <div class="course-name">파이썬으로 제어하는 자율주행 전기차</div>
+          <div class="course-tagline">직접 제어하는 자율주행 입문</div>
+          <div class="course-meta"><span>시간·비용 확인 필요</span></div>
+          <div class="course-foot">과정 자세히 보기 <svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-chevron" stroke="currentColor" style="transform:rotate(-90deg);transform-origin:center"/></svg></div>
+        </div>
+      </article>
+
+      <article class="course-card" data-cat="practical" data-course="automation">
+        <div class="course-thumb thumb-auto"><svg viewBox="0 0 24 24"><use href="#i-gear" color="#fff"/></svg></div>
+        <div class="course-body">
+          <div class="course-cat">AI 실무활용 · 운영 과정</div>
+          <div class="course-name">누구나 쉽게 배우는 AI 업무자동화 풀코스</div>
+          <div class="course-tagline">반복 업무를 더 스마트하게</div>
+          <div class="course-meta"><span>시간·비용 확인 필요</span></div>
+          <div class="course-foot">과정 자세히 보기 <svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-chevron" stroke="currentColor" style="transform:rotate(-90deg);transform-origin:center"/></svg></div>
+        </div>
+      </article>
+
+      <article class="course-card" data-cat="basic" data-course="aiBasic">
+        <div class="course-thumb thumb-ai"><svg viewBox="0 0 24 24"><use href="#i-chip" color="#fff"/></svg></div>
+        <div class="course-body">
+          <div class="course-cat">AI·코딩 기초 · 운영 과정</div>
+          <div class="course-name">파이썬으로 배우는 딥러닝 &amp; 인공지능 기초</div>
+          <div class="course-tagline">파이썬으로 AI의 기초 이해</div>
+          <div class="course-meta"><span>시간·비용 확인 필요</span></div>
+          <div class="course-foot">과정 자세히 보기 <svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-chevron" stroke="currentColor" style="transform:rotate(-90deg);transform-origin:center"/></svg></div>
+        </div>
+      </article>
+
+    </div>
+    </div>
+    <div class="cta-row"><a href="#" class="btn btn-outline">전체 교육과정 보기</a></div>
+  </div>
+</section>
+
+<!-- 05 LEARN BY DOING -->
+<section class="doing" id="doing">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">LEARN BY DOING</div>
+      <h2>보는 것보다 재미있는 건, 직접 해보는 순간.</h2>
+      <p>기초 원리를 이해하고, 손으로 확인하고, 눈앞의 결과물로 이어지는 배움.<br>작은 성공 경험이 기술을 더 가깝게 만듭니다.</p>
+    </div>
+    <div class="reel-grid">
+      <div class="reel-card thumb-mobility"><div class="play-mini"><svg width="14" height="14" viewBox="0 0 24 24"><use href="#i-play" fill="#fff"/></svg></div><div class="tag">자율주행 차량 이동</div></div>
+      <div class="reel-card thumb-robot"><div class="play-mini"><svg width="14" height="14" viewBox="0 0 24 24"><use href="#i-play" fill="#fff"/></svg></div><div class="tag">로봇팔 제어</div></div>
+      <div class="reel-card thumb-print"><div class="play-mini"><svg width="14" height="14" viewBox="0 0 24 24"><use href="#i-play" fill="#fff"/></svg></div><div class="tag">3D프린터 출력</div></div>
+    </div>
+    <div class="result-grid">
+      <div class="result-card">
+        <div class="browser-chrome"><i></i><i></i><i></i></div>
+        <div class="result-stage"><svg width="54" height="54" viewBox="0 0 24 24"><use href="#i-web" color="#2866E8"/></svg></div>
+        <div class="result-label">AI 홈페이지 완성 예시</div>
+      </div>
+      <div class="result-card">
+        <div class="browser-chrome"><i></i><i></i><i></i></div>
+        <div class="result-stage"><svg width="54" height="54" viewBox="0 0 24 24"><use href="#i-ppt" color="#2866E8"/></svg></div>
+        <div class="result-label">AI PPT 완성 예시</div>
+      </div>
+    </div>
+    <div class="cta-row"><a href="#courses" class="btn btn-primary">실습형 교육과정 살펴보기</a></div>
+  </div>
+</section>
+
+<!-- 06 WHY MIRACLE -->
+<section class="miracle" id="miracle">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">WHY MIRACLE</div>
+      <h2>배움은 끝나도, 실습은 계속됩니다.</h2>
+      <p>실습 교구를 무상으로 받고, 교육이 끝난 뒤에도 내 교구로 다시 연습할 수 있습니다.</p>
+    </div>
+    <div class="benefit-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon"><svg width="26" height="26" viewBox="0 0 24 24"><use href="#i-gift" stroke="currentColor"/></svg></div>
+        <div class="benefit-title">무상 제공</div>
+        <div class="benefit-desc">실습 교구를 추가 비용 없이 받습니다.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><svg width="26" height="26" viewBox="0 0 24 24"><use href="#i-keep" stroke="currentColor"/></svg></div>
+        <div class="benefit-title">반납 없이 소장</div>
+        <div class="benefit-desc">수료 후에도 반납할 필요가 없습니다.</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon"><svg width="26" height="26" viewBox="0 0 24 24"><use href="#i-repeat" stroke="currentColor"/></svg></div>
+        <div class="benefit-title">반복 연습</div>
+        <div class="benefit-desc">내 교구로 원하는 만큼 다시 연습합니다.</div>
+      </div>
+    </div>
+    <div class="scope-badge"><svg width="16" height="16" viewBox="0 0 24 24"><use href="#i-gift" stroke="currentColor"/></svg> 신규 Pre-KDT 3개 과정(자율주행·3D프린팅·협동로봇) 한정 혜택입니다</div>
+    <div class="cta-row"><a href="#courses" class="btn btn-primary">교구 제공 과정 확인하기</a></div>
+  </div>
+</section>
+
+<!-- 07 HOW TO START -->
+<section class="start" id="start">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">HOW TO START</div>
+      <h2>배우고 싶은 마음을 준비했다면, 신청은 차근차근.</h2>
+      <p>관심 있는 과정을 선택한 후 국민내일배움카드와 지원 조건을 확인하세요.<br>필요한 절차를 쉽게 안내해드립니다.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-label">과정 선택</div></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-num">2</div><div class="step-label">지원조건 확인</div></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-num">3</div><div class="step-label">수강신청</div></div>
+      <div class="step-line"></div>
+      <div class="step"><div class="step-num">4</div><div class="step-label">학습 시작</div></div>
+    </div>
+    <div class="cta-row"><a href="#" class="btn btn-primary">신청 방법 확인하기</a><a href="#footer" class="btn btn-outline">수강 상담하기</a></div>
+    <div class="faq" id="faq">
+      <div class="faq-item open">
+        <div class="faq-q">초보자도 수강할 수 있나요?<svg width="20" height="20" viewBox="0 0 24 24"><use href="#i-chevron" stroke="currentColor"/></svg></div>
+        <div class="faq-a"><p>네, 기초부터 차근차근 배울 수 있도록 구성되어 있습니다. 과정별 상세페이지에서 선수 지식 여부를 확인하실 수 있습니다.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">국민내일배움카드는 어떻게 사용하나요?<svg width="20" height="20" viewBox="0 0 24 24"><use href="#i-chevron" stroke="currentColor"/></svg></div>
+        <div class="faq-a"><p>발급된 카드로 과정 신청 시 지원 조건을 확인한 뒤 안내에 따라 진행하실 수 있습니다. 상담을 통해 자세히 안내해드립니다.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">지원 금액은 얼마인가요?<svg width="20" height="20" viewBox="0 0 24 24"><use href="#i-chevron" stroke="currentColor"/></svg></div>
+        <div class="faq-a"><p>개인별 지원 한도와 자격에 따라 달라질 수 있어, 과정 상담을 통해 정확한 금액을 안내해드립니다.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">교구는 어떻게 제공되나요?<svg width="20" height="20" viewBox="0 0 24 24"><use href="#i-chevron" stroke="currentColor"/></svg></div>
+        <div class="faq-a"><p>신규 Pre-KDT 3개 과정 수강생에 한해 실습 교구가 무상으로 제공되며, 수료 후 반납하지 않습니다.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">온라인 학습도 가능한가요?<svg width="20" height="20" viewBox="0 0 24 24"><use href="#i-chevron" stroke="currentColor"/></svg></div>
+        <div class="faq-a"><p>과정에 따라 운영 방식이 다를 수 있어, 상세페이지 및 상담을 통해 확인하실 수 있습니다.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">수강 기한은 어떻게 되나요?<svg width="20" height="20" viewBox="0 0 24 24"><use href="#i-chevron" stroke="currentColor"/></svg></div>
+        <div class="faq-a"><p>과정별로 운영 기간이 다르므로, 신청 전 상세페이지에서 확인하시길 권장합니다.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 FINAL CTA -->
+<section class="final-cta" id="final">
+  <div class="wrap">
+    <div class="final-banner">
+      <h2>궁금했던 기술, 이제 직접 시작해보세요.</h2>
+      <p>새로운 기술의 첫걸음은 거창할 필요가 없습니다. 지금 가장 관심 있는 과정을 찾아보세요.</p>
+      <div class="cta-row">
+        <a href="#courses" class="btn btn-outline">교육과정 전체보기</a>
+        <a href="#courses" class="btn btn-dark">지금 수강신청하기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-logo">미라클평생교육원</div>
+        <div class="foot-info">사업자등록번호 000-00-00000 · 대표자 ○○○<br>주소 · 대표전화 000-0000-0000</div>
+      </div>
+      <div class="foot-links">
+        <a href="#">이용약관</a>
+        <a href="#">개인정보처리방침</a>
+        <a href="#">원격훈련 관련 안내</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 미라클평생교육원. All rights reserved. · 고객센터 000-0000-0000 (평일 09:00~18:00)</span>
+      <div class="sns">
+        <a href="#"><svg width="15" height="15" viewBox="0 0 24 24"><use href="#i-web" stroke="currentColor"/></svg></a>
+        <a href="#"><svg width="15" height="15" viewBox="0 0 24 24"><use href="#i-chip" stroke="currentColor"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // tab filter (shared by course tabs and the quiz result)
+  function applyFilter(f){
+    document.querySelectorAll('.tab').forEach(function(t){
+      t.classList.toggle('active', t.getAttribute('data-filter') === f);
+    });
+    document.querySelectorAll('#courseGrid .course-card').forEach(function(card){
+      var show = (f === 'all') || (card.getAttribute('data-cat') === f);
+      card.style.display = show ? '' : 'none';
+    });
+  }
+  document.querySelectorAll('.tab').forEach(function(tab){
+    tab.addEventListener('click', function(){ applyFilter(tab.getAttribute('data-filter')); });
+  });
+  // faq accordion
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    item.querySelector('.faq-q').addEventListener('click', function(){
+      item.classList.toggle('open');
+    });
+  });
+
+  // course finder quiz
+  (function(){
+    var card = document.getElementById('quizCard');
+    if(!card) return;
+    var steps = Array.prototype.slice.call(card.querySelectorAll('.quiz-step'));
+    var MAX_PICKS = 2;
+    var COURSES = {
+      mobility:{name:'미래모빌리티 자율주행의 이해와 실습', meta:'41h · 496,000원', thumb:'thumb-mobility', icon:'i-car'},
+      print3d:{name:'3D프린팅 실무와 시제품제작(Fusion)', meta:'41h · 496,000원', thumb:'thumb-print', icon:'i-cube'},
+      robotArm:{name:'AI 로봇팔로 배우는 협동로봇 제어 원리', meta:'41h · 496,000원', thumb:'thumb-robot', icon:'i-arm'},
+      webAI:{name:'AI로 완성하는 홈페이지', meta:'20h · 242,000원', thumb:'thumb-web', icon:'i-web'},
+      pptAI:{name:'AI로 쉽게 만드는 PPT 끝판왕', meta:'16h · 193,600원', thumb:'thumb-ppt', icon:'i-ppt'},
+      drone:{name:'파이썬으로 제어하는 AI드론', meta:'시간·비용 확인 필요', thumb:'thumb-drone', icon:'i-drone'},
+      ev:{name:'파이썬으로 제어하는 자율주행 전기차', meta:'시간·비용 확인 필요', thumb:'thumb-ev', icon:'i-car'},
+      automation:{name:'누구나 쉽게 배우는 AI 업무자동화 풀코스', meta:'시간·비용 확인 필요', thumb:'thumb-auto', icon:'i-gear'},
+      aiBasic:{name:'파이썬으로 배우는 딥러닝 & 인공지능 기초', meta:'시간·비용 확인 필요', thumb:'thumb-ai', icon:'i-chip'}
+    };
+    var scores = {};
+    var picked = []; // persists across retakes, max 2
+
+    function showStep(name){
+      steps.forEach(function(s){ s.classList.toggle('active', s.getAttribute('data-step') === String(name)); });
+    }
+    function resetQuestions(){
+      scores = {};
+      showStep(1);
+    }
+    function topCourses(n){
+      return Object.keys(scores)
+        .filter(function(k){ return scores[k] > 0; })
+        .sort(function(a,b){ return scores[b] - scores[a]; })
+        .slice(0, n);
+    }
+    function renderTray(){
+      var tray = document.getElementById('quizTray');
+      if(picked.length === 0){ tray.innerHTML = ''; return; }
+      var html = '<span class="quiz-tray-label">선택한 과정 (' + picked.length + '/' + MAX_PICKS + ')</span>';
+      picked.forEach(function(key){
+        html += '<span class="quiz-tray-chip">' + COURSES[key].name + '<button type="button" data-remove="' + key + '">×</button></span>';
+      });
+      tray.innerHTML = html;
+      tray.querySelectorAll('[data-remove]').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          picked = picked.filter(function(k){ return k !== btn.getAttribute('data-remove'); });
+          renderTray();
+          renderResultIfVisible();
+        });
+      });
+    }
+    function renderResultIfVisible(){
+      var resultStep = card.querySelector('.quiz-step[data-step="result"]');
+      if(resultStep.classList.contains('active')) renderRecommendations(lastTop);
+    }
+    var lastTop = [];
+    function renderRecommendations(topKeys){
+      lastTop = topKeys;
+      var grid = document.getElementById('recoGrid');
+      grid.innerHTML = topKeys.map(function(key, i){
+        var c = COURSES[key];
+        var isPicked = picked.indexOf(key) !== -1;
+        var disabled = (!isPicked && picked.length >= MAX_PICKS);
+        return '' +
+          '<div class="reco-card' + (isPicked ? ' picked' : '') + '">' +
+            '<div class="reco-rank">' + (i === 0 ? '가장 잘 맞아요' : i + 1 + '순위') + '</div>' +
+            '<div class="reco-thumb ' + c.thumb + '"><svg viewBox="0 0 24 24"><use href="#' + c.icon + '" color="#fff"/></svg></div>' +
+            '<div class="reco-name">' + c.name + '</div>' +
+            '<div class="reco-meta">' + c.meta + '</div>' +
+            '<button type="button" class="reco-pick-btn' + (isPicked ? ' on' : '') + '" data-pick="' + key + '"' + (disabled ? ' disabled' : '') + '>' +
+              (isPicked ? '선택됨 ✓' : (disabled ? '최대 2개 선택됨' : '이 과정 선택하기')) +
+            '</button>' +
+          '</div>';
+      }).join('');
+      grid.querySelectorAll('[data-pick]').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var key = btn.getAttribute('data-pick');
+          if(picked.indexOf(key) !== -1){
+            picked = picked.filter(function(k){ return k !== key; });
+          } else if(picked.length < MAX_PICKS){
+            picked.push(key);
+          }
+          renderTray();
+          renderRecommendations(lastTop);
+        });
+      });
+      document.getElementById('quizRetry').textContent = picked.length >= MAX_PICKS ? '다른 과정으로 다시 테스트하기' : '다른 관심사로 1과정 더 찾기';
+    }
+    card.querySelectorAll('.quiz-step[data-step] .quiz-opt').forEach(function(opt){
+      opt.addEventListener('click', function(){
+        var stepEl = opt.closest('.quiz-step');
+        var stepAttr = stepEl.getAttribute('data-step');
+        if(stepAttr === 'result') return;
+        var stepNum = parseInt(stepAttr, 10);
+        opt.getAttribute('data-score').split(',').forEach(function(pair){
+          var parts = pair.split(':');
+          scores[parts[0]] = (scores[parts[0]] || 0) + parseInt(parts[1], 10);
+        });
+        if(stepNum < 4){
+          showStep(stepNum + 1);
+        } else {
+          renderRecommendations(topCourses(3));
+          showStep('result');
+        }
+      });
+    });
+    document.getElementById('quizGoBtn').addEventListener('click', function(e){
+      e.preventDefault();
+      var keys = picked.length ? picked : lastTop.slice(0, 1);
+      applyFilter('all');
+      document.getElementById('courses').scrollIntoView({behavior:'smooth'});
+      setTimeout(function(){
+        keys.forEach(function(key){
+          var el = document.querySelector('#courseGrid [data-course="' + key + '"]');
+          if(el) el.classList.add('highlight');
+        });
+        var first = document.querySelector('#courseGrid [data-course="' + keys[0] + '"]');
+        if(first) first.scrollIntoView({behavior:'smooth', block:'center'});
+      }, 400);
+    });
+    document.getElementById('quizRetry').addEventListener('click', resetQuestions);
+    renderTray();
+    renderRecommendations(['mobility','robotArm','print3d']); // placeholder so the result card isn't empty before anyone answers
+  })();
+</script>
+</body>
+</html>
