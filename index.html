@@ -84,10 +84,29 @@
     border-bottom:1px solid var(--line);
   }
   .gnb .wrap{display:flex;align-items:center;justify-content:space-between;width:100%;}
-  .logo{font-size:19px;font-weight:800;letter-spacing:-.02em;color:var(--navy);}
-  .logo span{color:var(--accent);}
+  .logo{display:flex;align-items:center;}
+  .logo img{height:26px;width:auto;display:block;}
   .nav-links{display:flex;gap:40px;}
   .nav-links a{font-size:15px;font-weight:500;color:var(--ink);opacity:.82;}
+
+  /* ---------- STICKY SUB-NAV (quick jump tabs) ---------- */
+  .subnav{
+    position:sticky;top:76px;z-index:49;height:48px;
+    background:#102879;display:flex;align-items:center;
+  }
+  .subnav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%;}
+  .subnav-tabs{display:flex;gap:36px;height:100%;}
+  .subnav-tabs a{
+    display:flex;align-items:center;height:100%;font-size:14.5px;font-weight:700;
+    color:rgba(255,255,255,.72);border-bottom:2px solid transparent;
+  }
+  .subnav-tabs a:hover{color:#fff;border-bottom-color:rgba(255,255,255,.4);}
+  .subnav-cta{
+    display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:rgba(255,255,255,.9);
+    padding-left:28px;border-left:1px solid rgba(255,255,255,.18);height:22px;
+  }
+  .subnav-cta:hover{color:#fff;}
+  .subnav-cta img{width:22px;height:22px;flex:none;}
   .nav-links a:hover{opacity:1;color:var(--accent);}
 
   /* ---------- HERO ---------- */
@@ -421,6 +440,7 @@
     html,body{min-width:0;}
     *{-webkit-print-color-adjust:exact;print-color-adjust:exact;color-adjust:exact;}
     .gnb{position:static;backdrop-filter:none;}
+    .subnav{display:none;}
     section{break-inside:avoid;page-break-after:always;}
     footer{page-break-after:auto;}
     .stories,.why-now,.ai-stats,.gov-compare,.credit-section,.finder,.courses,.doing,.miracle,.start,.final-cta{padding:36px 0;}
@@ -475,7 +495,7 @@
 
 <header class="gnb">
   <div class="wrap">
-    <div class="logo">미라클<span>평생교육원</span></div>
+    <div class="logo"><img src="assets/miso-logo.svg" alt="미라클평생교육원"></div>
     <nav class="nav-links">
       <a href="#about">소개</a>
       <a href="#courses">교육과정</a>
@@ -485,6 +505,18 @@
     <a href="#courses" class="btn btn-primary btn-sm">수강신청</a>
   </div>
 </header>
+
+<nav class="subnav" aria-label="빠른 이동">
+  <div class="wrap">
+    <div class="subnav-tabs">
+      <a href="#hero">교육 소개</a>
+      <a href="#doing">학습 소개</a>
+      <a href="#courses">커리큘럼</a>
+      <a href="#start">자주묻는 질문</a>
+    </div>
+    <a href="#courses" class="subnav-cta"><img src="assets/kdigital-symbol.png" alt="">국민내일배움카드 교육 전체</a>
+  </div>
+</nav>
 
 <!-- 01 HERO -->
 <section class="hero" id="hero">
