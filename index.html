@@ -76,22 +76,13 @@
   .btn-sm{height:38px;padding:0 18px;font-size:13.5px;}
   .cta-row{display:flex;gap:14px;flex-wrap:wrap;}
 
-  /* ---------- GNB ---------- */
-  .gnb{
-    position:sticky;top:0;z-index:50;height:76px;
-    display:flex;align-items:center;
-    background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(14px);
-    border-bottom:1px solid var(--line);
-  }
-  .gnb .wrap{display:flex;align-items:center;justify-content:space-between;width:100%;}
-  .logo{display:flex;align-items:center;}
-  .logo img{height:26px;width:auto;display:block;}
-  .nav-links{display:flex;gap:40px;}
-  .nav-links a{font-size:15px;font-weight:500;color:var(--ink);opacity:.82;}
+  /* ---------- SITE HEADER (static image) ---------- */
+  .site-header-img{width:100%;line-height:0;}
+  .site-header-img img{width:100%;height:auto;display:block;}
 
   /* ---------- STICKY SUB-NAV (quick jump tabs) ---------- */
   .subnav{
-    position:sticky;top:76px;z-index:49;height:48px;
+    position:sticky;top:0;z-index:49;height:48px;
     background:#102879;display:flex;align-items:center;
   }
   .subnav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%;}
@@ -107,7 +98,6 @@
   }
   .subnav-cta:hover{color:#fff;}
   .subnav-cta img{width:22px;height:22px;flex:none;}
-  .nav-links a:hover{opacity:1;color:var(--accent);}
 
   /* ---------- HERO ---------- */
   .hero{
@@ -439,7 +429,6 @@
     @page{ size:420mm 297mm; margin:14mm; }
     html,body{min-width:0;}
     *{-webkit-print-color-adjust:exact;print-color-adjust:exact;color-adjust:exact;}
-    .gnb{position:static;backdrop-filter:none;}
     .subnav{display:none;}
     section{break-inside:avoid;page-break-after:always;}
     footer{page-break-after:auto;}
@@ -493,18 +482,9 @@
   </defs>
 </svg>
 
-<header class="gnb">
-  <div class="wrap">
-    <div class="logo"><img src="assets/miso-logo.svg" alt="미라클평생교육원"></div>
-    <nav class="nav-links">
-      <a href="#about">소개</a>
-      <a href="#courses">교육과정</a>
-      <a href="#start">지원제도</a>
-      <a href="#footer">고객센터</a>
-    </nav>
-    <a href="#courses" class="btn btn-primary btn-sm">수강신청</a>
-  </div>
-</header>
+<div class="site-header-img">
+  <img src="assets/site-header.png" alt="미라클 평생교육원">
+</div>
 
 <nav class="subnav" aria-label="빠른 이동">
   <div class="wrap">
