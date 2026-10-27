@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>미라클평생교육원 | K-디지털 인덱스 V1·V2 비교</title>
+<title>미라클평생교육원 | K-디지털 인덱스 V1·V2·V3 비교</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
 <style>
@@ -17,11 +17,12 @@
     color:var(--ink);background:var(--bg-alt);
   }
   a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;}
 
   /* ---------- TOP BAR ---------- */
   header.bar{
     position:sticky;top:0;z-index:20;background:var(--navy);color:#fff;
-    padding:14px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;
+    padding:14px 24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;
     box-shadow:0 4px 16px rgba(0,0,0,.18);
   }
   header.bar h1{font-size:15.5px;font-weight:800;margin:0;white-space:nowrap;}
@@ -34,6 +35,7 @@
     padding:7px 14px;border-radius:999px;cursor:pointer;white-space:nowrap;
   }
   .seg button.active{background:#fff;color:var(--navy);}
+  .seg.sm button{padding:5px 11px;font-size:11.5px;}
   .bar-link{
     display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:#fff;
     background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:8px 14px;cursor:pointer;
@@ -50,8 +52,10 @@
   }
   #summaryPanel.open{display:block;}
   #summaryPanel h2{font-size:17px;margin:0 0 4px;}
-  #summaryPanel > p.lead{margin:0 0 20px;font-size:13px;color:var(--muted);}
-  .sum-item{border-top:1px solid var(--line);padding:16px 0;}
+  #summaryPanel .group-title{font-size:14px;font-weight:800;color:var(--navy);margin:26px 0 4px;padding-top:18px;border-top:2px solid var(--line);}
+  #summaryPanel .group-title:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+  #summaryPanel > p.lead, #summaryPanel p.lead{margin:0 0 18px;font-size:13px;color:var(--muted);}
+  .sum-item{border-top:1px solid var(--line);padding:14px 0;}
   .sum-item:first-of-type{border-top:none;}
   .sum-item .sec{font-size:12px;font-weight:800;color:var(--accent-600);letter-spacing:.02em;margin-bottom:6px;}
   .sum-item .why{font-size:13px;color:var(--muted);line-height:1.6;}
@@ -71,13 +75,13 @@
     box-shadow:0 8px 20px rgba(15,23,42,.06);display:flex;flex-direction:column;
   }
   .pane-head{
-    display:flex;align-items:center;justify-content:space-between;padding:10px 16px;
-    border-bottom:1px solid var(--line);background:var(--bg-alt);
+    display:flex;align-items:center;justify-content:space-between;padding:8px 10px 8px 16px;gap:10px;
+    border-bottom:1px solid var(--line);background:var(--bg-alt);flex-wrap:wrap;
   }
-  .pane-head .tag{font-size:12.5px;font-weight:800;}
-  .pane-head .tag.v1{color:var(--muted);}
-  .pane-head .tag.v2{color:var(--accent-600);}
-  .pane-head a{font-size:11.5px;font-weight:700;color:var(--accent-600);}
+  .pane-head .label{font-size:12.5px;font-weight:800;color:var(--ink);white-space:nowrap;}
+  .pane-head .label .ver{color:var(--accent-600);}
+  .pane-head-right{display:flex;align-items:center;gap:8px;}
+  .pane-head a.openlink{font-size:11.5px;font-weight:700;color:var(--accent-600);white-space:nowrap;}
   .frame-wrap{
     position:relative;overflow:auto;height:calc(100vh - 230px);min-height:460px;
     background:#f1f3f7;display:flex;justify-content:center;
@@ -93,19 +97,26 @@
     box-shadow:0 0 0 10px #1b1b1f, 0 20px 40px rgba(0,0,0,.35);border-radius:28px;
   }
   .frame-wrap.mobile{height:calc(100vh - 230px);}
+  .mobile-pane-switch{display:none;max-width:1400px;margin:0 auto 12px;}
+
+  /* mobile layout for the TOOL itself (not the previewed site) */
+  @media (max-width:860px){
+    .frames{grid-template-columns:1fr;}
+    .pane.is-secondary-on-mobile{display:none;}
+    .mobile-pane-switch{display:flex;}
+  }
 </style>
 </head>
 <body>
 
 <header class="bar">
-  <h1>K-디지털 인덱스 비교<span>V1(기존) · V2(개선안)</span></h1>
+  <h1>K-디지털 인덱스 비교<span>V1(기존) · V2(설득구조 개선) · V3(전환형 재기획)</span></h1>
 
   <div class="bar-group">
-    <span class="bar-label">보기</span>
-    <div class="seg" id="viewSeg">
-      <button data-view="both" class="active">나란히 비교</button>
-      <button data-view="v1">V1만</button>
-      <button data-view="v2">V2만</button>
+    <span class="bar-label">모드</span>
+    <div class="seg" id="modeSeg">
+      <button data-mode="single" class="active">단독 보기</button>
+      <button data-mode="both">나란히 비교</button>
     </div>
   </div>
 
@@ -120,87 +131,140 @@
   <div class="spacer"></div>
 
   <div class="bar-group">
-    <a class="bar-link" href="versions/v1/index.html" target="_blank" rel="noopener">V1 새 탭에서 열기 ↗</a>
-    <a class="bar-link" href="versions/v2/index.html" target="_blank" rel="noopener">V2 새 탭에서 열기 ↗</a>
     <span class="bar-link primary" id="toggleSummary">변경 사항 요약</span>
   </div>
 </header>
 
 <main>
   <div id="summaryPanel">
-    <h2>V1 → V2 변경 사항 요약</h2>
-    <p class="lead">디자인·구조·스타일은 그대로 두고, 설득 구조와 카피만 개선했습니다. 통계 수치·과정명·가격은 변경하지 않았습니다. 자세한 전/후 카피와 변경 이유는 <a href="docs/change-log.md" target="_blank">docs/change-log.md</a>에 모두 기록되어 있습니다.</p>
+    <h2>버전별 변경 사항 요약</h2>
+    <p class="lead">자세한 전/후 카피·변경 이유는 <a href="docs/change-log.md" target="_blank">docs/change-log.md</a>(V1→V2, V2→V3)와 <a href="docs/copy-v3.md" target="_blank">docs/copy-v3.md</a>(V3 전체 카피)에 모두 기록되어 있습니다.</p>
 
+    <div class="group-title">V2 → V3 — "정보 전달형"에서 "전환형(실습 경험 중심)"으로 재기획</div>
+    <div class="sum-item">
+      <div class="sec">가장 중요한 변화</div>
+      <div class="why">V2는 V1의 카피만 다듬은 버전이지만, V3는 정보 구조 자체를 다시 짰습니다. 정책·통계를 앞세우던 순서를 "직접 해보고 싶다"는 흥미 유발부터 시작해, 실습 경험 → 교구 혜택 → 비용 부담 완화 → 관심사 선택 → 과정 비교 → FAQ → 전환 순서로 재배치했습니다. 섹션 수는 V2의 13개 구성에서 V3 9개로 정리했습니다.</div>
+    </div>
+    <div class="sum-item">
+      <div class="sec">제외된 V1/V2 전용 콘텐츠</div>
+      <div class="why">정책 통계 섹션(BY THE NUMBERS), 사교육 비교 섹션, 가상 학습자 영상 후기 섹션은 V3의 9개 섹션 구조에 독립 섹션으로 재사용하지 않았습니다(기획 지침에 따름). 비용 안내는 GOVERNMENT SUPPORT 섹션으로, 실습 교구 혜택은 SPECIAL BENEFIT 섹션으로 역할을 이어받았습니다.</div>
+    </div>
+    <div class="sum-item">
+      <div class="sec">탐색 UX</div>
+      <div class="why">V2의 4문항 성향 퀴즈(COURSE FINDER) 대신, V3는 관심사 3가지 중 1개를 즉시 선택하는 INTEREST SELECTOR로 단순화했습니다(로그인·개인정보 입력 없음).</div>
+    </div>
+    <div class="sum-item">
+      <div class="sec">과정 카드 정보량</div>
+      <div class="why">V2는 "이런 분께 추천" 한 줄만 추가했지만, V3는 과정 분류·학습경험·추천대상·핵심실습·교구제공여부·훈련시간·훈련비·본인부담금·CTA까지 9개 항목을 모든 카드에 동일하게 표시합니다.</div>
+    </div>
+    <div class="sum-item">
+      <div class="sec">상세페이지 CTA</div>
+      <div class="why">상세페이지 URL이 아직 없어 V3의 모든 "과정 자세히 보기"는 href="#"가 아닌 "상세페이지 연결 준비 중" 비활성 표시로 구현했습니다.</div>
+    </div>
+    <div class="sum-foot">섹션별 상세 매핑과 승인 필요 항목은 docs/change-log.md의 "V2 → V3" 표를 확인해주세요.</div>
+
+    <div class="group-title">V1 → V2 — 카피·설득 구조 개선 (디자인 동일)</div>
     <div class="sum-item">
       <div class="sec">01. HERO</div>
       <div class="why">메인 카피를 "직접 가동시키는 미래" → "직접 만드는 미래"로 비교 검토. CTA를 "나에게 맞는 교육과정 찾기"로 바꿔 대표 CTA 역할을 하도록 하고, 온라인·실습 가치를 서브카피에 먼저 담았습니다.</div>
     </div>
     <div class="sum-item">
-      <div class="sec">02. 학습 소개(영상)</div>
-      <div class="why">영상을 통해 무엇을 확인할 수 있는지("100% 온라인 학습 환경")를 서브카피에 명시했습니다.</div>
-    </div>
-    <div class="sum-item">
-      <div class="sec">03. 정부 정책 / 디지털 역량</div>
-      <div class="why">"국가가 나서야 할 만큼 급하다"는 불안 조성 톤에서, "배우면 선택지가 넓어진다"는 가능성 중심 메시지로 전환했습니다.</div>
-    </div>
-    <div class="sum-item">
-      <div class="sec">04. 통계 (BY THE NUMBERS)</div>
-      <div class="why">수치·출처는 그대로 유지하고, 통계가 수강 결정에 어떤 의미인지 한 문장을 덧붙였습니다.</div>
-    </div>
-    <div class="sum-item">
-      <div class="sec">05. 문제 공감</div>
-      <div class="why">별도 섹션으로 분리하지 않았습니다 — 기존 "학습자 스토리" 섹션이 이미 공감 역할을 하고 있어, 중복 섹션을 새로 만들기보다 현행 구조를 유지했습니다.</div>
-    </div>
-    <div class="sum-item">
-      <div class="sec">06~07. 혜택 / 크레딧 / 훈련비</div>
-      <div class="why">국비지원 혜택(사교육 비교)과 실습 교구 소장 혜택(Pre-KDT 3개 과정 한정)의 역할을 그대로 분리 유지. 비용 관련 CTA 문구를 "크레딧 사용 방법 확인하기" → "지원 조건 확인하기"로 통일했습니다.</div>
-    </div>
-    <div class="sum-item">
-      <div class="sec">08. 교육과정 선택 (전환 핵심 섹션)</div>
+      <div class="sec">08. 교육과정 선택</div>
       <div class="why">9개 과정 카드 전체에 "이런 분께 추천" 한 줄을 새로 추가했습니다. 과정명·시간·가격·개수는 변경하지 않았습니다.</div>
-    </div>
-    <div class="sum-item">
-      <div class="sec">10. 신청 절차</div>
-      <div class="why">제도 설명 중심 문장을 행동 순서 중심으로 간결화했습니다. 단계 구성(4단계)은 유지했습니다.</div>
     </div>
     <div class="sum-item">
       <div class="sec">11. 최종 CTA</div>
       <div class="why">"지금 수강신청하기" → "교육과정 선택하기"로 변경 — 실제 신청 화면으로 바로 연결되지 않는 버튼에는 "신청하기" 표현을 쓰지 않는다는 원칙을 적용했습니다.</div>
     </div>
-
-    <div class="sum-foot">확인이 필요한 항목(가격·시간·CTA 목적지 판단 등)은 change-log.md 하단에 별도로 정리했습니다.</div>
+    <div class="sum-foot">전체 11개 섹션 변경 내역은 docs/change-log.md의 "V1 → V2" 표를 확인해주세요.</div>
   </div>
 
-  <div class="note">※ 이 페이지는 PC 전용(최소 너비 1440px)으로 설계된 사이트의 비교 도구입니다. "모바일 미리보기"는 실제 반응형이 아니라, PC 화면을 축소해 레이아웃을 참고용으로 보여주는 기능입니다. 각 패널은 내부 스크롤로 독립적으로 움직입니다.</div>
+  <div class="note">※ V1/V2는 PC 전용(최소 너비 1440px), V3는 데스크톱·태블릿·모바일 반응형으로 제작되었습니다. 이 비교 도구의 "모바일 미리보기"는 V1/V2 화면을 축소해 참고용으로 보여주는 기능이며, V3 화면은 실제 반응형 그대로 보여줍니다. 각 패널은 내부 스크롤로 독립적으로 움직입니다.</div>
+
+  <div class="mobile-pane-switch">
+    <div class="seg" id="mobilePaneSeg">
+      <button data-pane="left" class="active">왼쪽 화면</button>
+      <button data-pane="right">오른쪽 화면</button>
+    </div>
+  </div>
 
   <div class="frames" id="frames">
-    <div class="pane" id="paneV1">
-      <div class="pane-head"><span class="tag v1">V1 · 기존안</span><a href="versions/v1/index.html" target="_blank" rel="noopener">새 탭 ↗</a></div>
-      <div class="frame-wrap" id="wrapV1"><iframe src="versions/v1/index.html" title="V1 기존안"></iframe></div>
+    <div class="pane" id="paneLeft">
+      <div class="pane-head">
+        <span class="label">왼쪽 화면 · <span class="ver" id="labelLeft">V1</span></span>
+        <div class="pane-head-right">
+          <div class="seg sm" data-pane-select="left">
+            <button data-v="v1" class="active">V1</button>
+            <button data-v="v2">V2</button>
+            <button data-v="v3">V3</button>
+          </div>
+          <a class="openlink" id="openLeft" href="versions/v1/index.html" target="_blank" rel="noopener">새 탭 ↗</a>
+        </div>
+      </div>
+      <div class="frame-wrap" id="wrapLeft"><iframe id="iframeLeft" src="versions/v1/index.html" title="왼쪽 화면"></iframe></div>
     </div>
-    <div class="pane" id="paneV2">
-      <div class="pane-head"><span class="tag v2">V2 · 개선안</span><a href="versions/v2/index.html" target="_blank" rel="noopener">새 탭 ↗</a></div>
-      <div class="frame-wrap" id="wrapV2"><iframe src="versions/v2/index.html" title="V2 개선안"></iframe></div>
+    <div class="pane is-secondary-on-mobile" id="paneRight">
+      <div class="pane-head">
+        <span class="label">오른쪽 화면 · <span class="ver" id="labelRight">V2</span></span>
+        <div class="pane-head-right">
+          <div class="seg sm" data-pane-select="right">
+            <button data-v="v1">V1</button>
+            <button data-v="v2" class="active">V2</button>
+            <button data-v="v3">V3</button>
+          </div>
+          <a class="openlink" id="openRight" href="versions/v2/index.html" target="_blank" rel="noopener">새 탭 ↗</a>
+        </div>
+      </div>
+      <div class="frame-wrap" id="wrapRight"><iframe id="iframeRight" src="versions/v2/index.html" title="오른쪽 화면"></iframe></div>
     </div>
   </div>
 </main>
 
 <script>
+  var SRC = { v1:'versions/v1/index.html', v2:'versions/v2/index.html', v3:'versions/v3/index.html' };
   var frames = document.getElementById('frames');
-  var paneV1 = document.getElementById('paneV1');
-  var paneV2 = document.getElementById('paneV2');
-  var wrapV1 = document.getElementById('wrapV1');
-  var wrapV2 = document.getElementById('wrapV2');
+  var paneLeft = document.getElementById('paneLeft');
+  var paneRight = document.getElementById('paneRight');
+  var wrapLeft = document.getElementById('wrapLeft');
+  var wrapRight = document.getElementById('wrapRight');
+  var mode = 'single';
 
-  document.getElementById('viewSeg').addEventListener('click', function(e){
-    var btn = e.target.closest('button[data-view]');
+  function setPane(side, v){
+    var iframe = document.getElementById('iframe' + (side === 'left' ? 'Left' : 'Right'));
+    var label = document.getElementById('label' + (side === 'left' ? 'Left' : 'Right'));
+    var open = document.getElementById('open' + (side === 'left' ? 'Left' : 'Right'));
+    iframe.src = SRC[v];
+    label.textContent = v.toUpperCase();
+    open.href = SRC[v];
+    document.querySelectorAll('[data-pane-select="' + side + '"] button').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-v') === v);
+    });
+  }
+
+  document.querySelectorAll('[data-pane-select]').forEach(function(seg){
+    var side = seg.getAttribute('data-pane-select');
+    seg.addEventListener('click', function(e){
+      var btn = e.target.closest('button[data-v]');
+      if(!btn) return;
+      setPane(side, btn.getAttribute('data-v'));
+    });
+  });
+
+  document.getElementById('modeSeg').addEventListener('click', function(e){
+    var btn = e.target.closest('button[data-mode]');
     if(!btn) return;
-    document.querySelectorAll('#viewSeg button').forEach(function(b){ b.classList.remove('active'); });
+    document.querySelectorAll('#modeSeg button').forEach(function(b){ b.classList.remove('active'); });
     btn.classList.add('active');
-    var v = btn.getAttribute('data-view');
-    frames.classList.toggle('single', v !== 'both');
-    paneV1.style.display = (v === 'both' || v === 'v1') ? '' : 'none';
-    paneV2.style.display = (v === 'both' || v === 'v2') ? '' : 'none';
+    mode = btn.getAttribute('data-mode');
+    frames.classList.toggle('single', mode === 'single');
+    paneRight.style.display = (mode === 'both') ? '' : 'none';
+    document.querySelector('.mobile-pane-switch').style.display = (mode === 'both') ? '' : 'none';
+    if(mode === 'both'){
+      // reset to "left" on re-entering compare mode so the mobile switch state stays predictable
+      document.querySelectorAll('#mobilePaneSeg button').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-pane') === 'left'); });
+      paneLeft.classList.remove('is-secondary-on-mobile');
+      paneRight.classList.add('is-secondary-on-mobile');
+    }
   });
 
   document.getElementById('deviceSeg').addEventListener('click', function(e){
@@ -209,13 +273,26 @@
     document.querySelectorAll('#deviceSeg button').forEach(function(b){ b.classList.remove('active'); });
     btn.classList.add('active');
     var mobile = btn.getAttribute('data-device') === 'mobile';
-    wrapV1.classList.toggle('mobile', mobile);
-    wrapV2.classList.toggle('mobile', mobile);
+    wrapLeft.classList.toggle('mobile', mobile);
+    wrapRight.classList.toggle('mobile', mobile);
+  });
+
+  document.getElementById('mobilePaneSeg').addEventListener('click', function(e){
+    var btn = e.target.closest('button[data-pane]');
+    if(!btn) return;
+    document.querySelectorAll('#mobilePaneSeg button').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    var showRight = btn.getAttribute('data-pane') === 'right';
+    paneLeft.classList.toggle('is-secondary-on-mobile', showRight);
+    paneRight.classList.toggle('is-secondary-on-mobile', !showRight);
   });
 
   document.getElementById('toggleSummary').addEventListener('click', function(){
     document.getElementById('summaryPanel').classList.toggle('open');
   });
+
+  // start in single mode: right pane hidden until "나란히 비교" is chosen
+  paneRight.style.display = 'none';
 </script>
 </body>
 </html>
